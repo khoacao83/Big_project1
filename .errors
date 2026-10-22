@@ -1,0 +1,5 @@
+ModuleNotFoundError	-> Kiểm tra virtual environment và cài dependencies
+API key not valid	-> Kiểm tra .env và API key
+accessNotConfigured	-> Kiểm tra YouTube Data API đã Enable
+403	                -> Kiểm tra restriction, quyền truy cập và quota
+Không có items	    -> Kiểm tra channel ID
