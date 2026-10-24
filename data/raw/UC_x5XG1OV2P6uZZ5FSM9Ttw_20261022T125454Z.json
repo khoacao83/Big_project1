@@ -347687,10 +347687,10 @@
             "height": 720
           }
         },
-        "channelTitle": "Google for Developers",
+        "channelTitle": "Google for Developers",id"
         "categoryId": "28",
         "liveBroadcastContent": "none",
-        "defaultLanguage": "es",
+        "defaultLanguage": "es",id"
         "localized": {
           "title": "Creando la presentación de usuario en el Developer Bus 2013 (spanish)",
           "description": "Presentación preliminar de cada uno de los proyectos pensando en la interfaz de usuario."
