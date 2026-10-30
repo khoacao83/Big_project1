@@ -16,10 +16,17 @@ def main():
 
     raw_path = raw_files[-1]
 
-    with raw_path.open(encoding="utf-8") as f:
-        raw_data = json.load(f)
+    try:
+        with raw_path.open(encoding="utf-8") as f:
+            raw_data = json.load(f)
+    except json.JSONDecodeError as exc:
+        reason = "empty" if raw_path.stat().st_size == 0 else "invalid JSON"
+        raise ValueError(
+            f"Raw data file '{raw_path}' is {reason}. "
+            "Run `python -m main` to generate a valid raw data file."
+        ) from exc
 
-    videos = raw_data["videos"]
+    videos = raw_data["video"]
 
     transformed = [
         transform_video(video)
@@ -36,10 +43,7 @@ def main():
         raw_path.stem + "_clean.json"
     )
 
-    with output_path.open(
-        "w",
-        encoding="utf-8"
-    ) as f:
+    with output_path.open("w", encoding="utf-8") as f:
         json.dump(
             transformed,
             f,

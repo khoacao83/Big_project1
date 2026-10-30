@@ -1,7 +1,7 @@
 from datetime import datetime, timezone
 import isodate
 
-def to_init(value):
+def to_int(value):
     if value is None:
         return None
     try: 
@@ -22,17 +22,17 @@ def parse_duration(duration):
 def transform_video(video, artist_name=None):
     snippet = video.get("snippet") or {}
     content = video.get("contentDetails") or {}
-    stats = video.get("statistic") or {}
+    stats = video.get("statistics") or {}
 
     return {
         "artist_name": artist_name,
-        "channel_ID": snippet.get("channelId"),
+        "channel_id": snippet.get("channelId"),
         "channel_title": snippet.get("channelTitle"),
-        "video_id":snippet.get("id"),
+        "video_id": video.get("id"),
         "video_title":snippet.get("title"),
         "description":snippet.get("description"),
         "published_at":snippet.get("publishedAt"),
-        "duration_second":parse_duration(content.get("duration")),
+        "duration_seconds":parse_duration(content.get("duration")),
 
         "tags": snippet.get("tags", []),
         "category_id": snippet.get("categoryId"),
